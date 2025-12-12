@@ -1,29 +1,23 @@
-from datetime import datetime
-from app import app
+from datetime import datetime # импортируем модуль datetime для работы с датой и временем
+from app import app # импортируем объект приложения app
 
-# / — приветствие
-@app.route("/")
-def index():
-    return "Добро пожаловать в Flask-приложение!"
+@app.route("/") # создаём маршрут "/" — главная страница
+def index(): # функция-обработчик для главной страницы
+    return "Добро пожаловать в Flask-приложение!" # возвращаем строку-приветствие
 
-# /hello/<name> — персональное приветствие
-@app.route("/hello/<name>")
-def hello(name):
-    return f"Привет, {name}!"
+@app.route("/hello/<name>") # создаём маршрут "/hello/<name>" — персональное приветствие
+def hello(name): # функция принимает параметр name из URL
+    return f"Привет, {name}!" # возвращаем строку с именем пользователя
 
-# /square/<int:number> — квадрат числа
-@app.route("/square/<int:number>")
-def square(number):
-    return f"Квадрат числа {number} равен {number ** 2}"
+@app.route("/square/<int:number>") # создаём маршрут "/square/<number>" — квадрат числа
+def square(number): # функция принимает число number из URL
+    return f"Квадрат числа {number} равен {number ** 2}" # возвращаем квадрат числа
 
-# Вариант 4: /time — текущее серверное время
-@app.route("/time")
-def time():
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return f"Текущее серверное время: {now}"
+@app.route("/time") # создаём маршрут "/time" — текущее серверное время
+def time(): # функция-обработчик для времени
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # получаем текущее время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС
+    return f"Текущее серверное время: {now}" # возвращаем строку с текущим временем
 
-# Вариант 4: /repeat/<word>/<n> — повторяет слово n раз
-@app.route("/repeat/<word>/<int:n>")
-def repeat(word, n):
-    return f"Результат: {' '.join([word] * n)}"
-
+@app.route("/repeat/<word>/<int:n>") # создаём маршрут "/repeat/<word>/<n>" — повтор слова n раз
+def repeat(word, n): # функция принимает слово и число повторений
+    return f"Результат: {' '.join([word] * n)}" # повторяем слово n раз и возвращаем строку
