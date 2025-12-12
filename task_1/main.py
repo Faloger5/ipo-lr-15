@@ -1,4 +1,4 @@
-from app import app
-
-if __name__ == "__main__":
-    app.run(debug=True)
+#Доброва Анна
+from app import app # импортируем объект приложения app
+if __name__ == "__main__": # проверяем, запущен ли файл напрямую
+    app.run(debug=True) # запускаем сервер Flask в режиме отладки
